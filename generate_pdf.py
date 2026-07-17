@@ -23,6 +23,16 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
 
 def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
+    # Check if target file is locked
+    if os.path.exists(filename):
+        try:
+            with open(filename, "ab") as f:
+                pass
+        except PermissionError:
+            old_filename = filename
+            filename = filename.replace(".pdf", "_new.pdf")
+            print(f"Warning: '{old_filename}' is locked (open in another program). Writing to '{filename}' instead.")
+
     # Target 2 pages on A4 sheet
     doc = SimpleDocTemplate(
         filename,
@@ -404,21 +414,8 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     story.append(Paragraph("Computer Vision, Model Compression &amp; Quantization, Knowledge Distillation, Explainable AI (XAI), Natural Language Processing, Assistive &amp; Accessibility Tech (WCAG), Reinforcement Learning &amp; Wireless MAC Network Optimizations (RFID).", style_body))
 
     # Build Document
-    try:
-        doc.build(story)
-        print(f"CV successfully generated and saved as '{filename}'!")
-    except PermissionError:
-        alt_filename = filename.replace(".pdf", "_new.pdf")
-        doc_alt = SimpleDocTemplate(
-            alt_filename,
-            pagesize=A4,
-            rightMargin=36,
-            leftMargin=36,
-            topMargin=36,
-            bottomMargin=36
-        )
-        doc_alt.build(story)
-        print(f"Warning: '{filename}' was locked (open in another program). Saved as '{alt_filename}' instead.")
+    doc.build(story)
+    print(f"CV successfully generated and saved as '{filename}'!")
 
 if __name__ == "__main__":
     build_pdf()
