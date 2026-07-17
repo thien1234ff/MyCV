@@ -18,7 +18,7 @@ except ImportError:
 
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
 
@@ -155,17 +155,57 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     # ----------------------------------------------------
     # HEADER
     # ----------------------------------------------------
-    story.append(Paragraph("HOANG KIM THIEN", style_name))
-    story.append(Paragraph("Computer Science Student &amp; Artificial Intelligence Researcher", style_subtitle))
+    header_story = []
+    
+    style_name_left = ParagraphStyle(
+        'CVNameLeft',
+        parent=style_name,
+        alignment=TA_LEFT
+    )
+    style_subtitle_left = ParagraphStyle(
+        'CVSubtitleLeft',
+        parent=style_subtitle,
+        alignment=TA_LEFT,
+        spaceAfter=4
+    )
+    style_contact_left = ParagraphStyle(
+        'CVContactLeft',
+        parent=style_contact,
+        alignment=TA_LEFT,
+        spaceAfter=0
+    )
+    
+    header_story.append(Paragraph("HOANG KIM THIEN", style_name_left))
+    header_story.append(Paragraph("Computer Science Student &amp; Artificial Intelligence Researcher", style_subtitle_left))
     
     contact_text = (
         "Email: <a href='mailto:hkthien@husc.edu.vn'>hkthien@husc.edu.vn</a>  |  "
         "Phone: (+84) 76-265-7225  |  "
-        "GitHub: <a href='https://github.com/thien1234ff'>github.com/thien1234ff</a>  |<br/>"
+        "GitHub: <a href='https://github.com/thien1234ff'>github.com/thien1234ff</a><br/>"
         "LinkedIn: <a href='https://linkedin.com/in/hoangkimthien'>linkedin.com/in/hoangkimthien</a>  |  "
         "Google Scholar: <a href='https://scholar.google.com/citations?user=hoangkimthien'>Google Scholar</a>"
     )
-    story.append(Paragraph(contact_text, style_contact))
+    header_story.append(Paragraph(contact_text, style_contact_left))
+    
+    avatar_path = "img/avatar/b0bf910b9bf51aab43e4.jpg"
+    if os.path.exists(avatar_path):
+        avatar_img = Image(avatar_path, width=65, height=65)
+    else:
+        avatar_img = ""
+        print(f"Warning: Avatar image not found at {avatar_path}")
+        
+    header_data = [[header_story, avatar_img]]
+    header_table = Table(header_data, colWidths=[450, 73])
+    header_table.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+    ]))
+    
+    story.append(header_table)
+    story.append(Spacer(1, 10))
     
     # Helper function for section separators
     def create_section_title(title):
@@ -364,8 +404,21 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     story.append(Paragraph("Computer Vision, Model Compression &amp; Quantization, Knowledge Distillation, Explainable AI (XAI), Natural Language Processing, Assistive &amp; Accessibility Tech (WCAG), Reinforcement Learning &amp; Wireless MAC Network Optimizations (RFID).", style_body))
 
     # Build Document
-    doc.build(story)
-    print(f"CV successfully generated and saved as '{filename}'!")
+    try:
+        doc.build(story)
+        print(f"CV successfully generated and saved as '{filename}'!")
+    except PermissionError:
+        alt_filename = filename.replace(".pdf", "_new.pdf")
+        doc_alt = SimpleDocTemplate(
+            alt_filename,
+            pagesize=A4,
+            rightMargin=36,
+            leftMargin=36,
+            topMargin=36,
+            bottomMargin=36
+        )
+        doc_alt.build(story)
+        print(f"Warning: '{filename}' was locked (open in another program). Saved as '{alt_filename}' instead.")
 
 if __name__ == "__main__":
     build_pdf()

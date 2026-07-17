@@ -64,7 +64,6 @@
 
     /* CV Header */
     header {
-      text-align: center;
       margin-bottom: 22px;
       border-bottom: 2px solid var(--color-primary);
       padding-bottom: 12px;
@@ -77,6 +76,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 4px;
       text-transform: uppercase;
+      text-align: left;
     }
 
     header .subtitle {
@@ -248,18 +248,25 @@
 
   <!-- HEADER -->
   <header>
-    <h1>Hoang Kim Thien</h1>
-    <div class="subtitle">Computer Science Student &amp; Artificial Intelligence Researcher</div>
-    <div class="contact-info">
-      <a href="mailto:hkthien@husc.edu.vn">hkthien@husc.edu.vn</a>
-      <span class="separator">|</span>
-      <span>(+84) 76-265-7225</span>
-      <span class="separator">|</span>
-      <a href="https://github.com/thien1234ff" target="_blank">github.com/thien1234ff</a>
-      <span class="separator">|</span>
-      <a href="https://linkedin.com/in/hoangkimthien" target="_blank">linkedin.com/in/hoangkimthien</a>
-      <span class="separator">|</span>
-      <a href="https://scholar.google.com/citations?user=hoangkimthien" target="_blank">Google Scholar</a>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+      <div style="text-align: left; flex-grow: 1;">
+        <h1>Hoang Kim Thien</h1>
+        <div class="subtitle" style="margin-bottom: 8px;">Computer Science Student &amp; Artificial Intelligence Researcher</div>
+        <div class="contact-info" style="justify-content: flex-start;">
+          <a href="mailto:hkthien@husc.edu.vn">hkthien@husc.edu.vn</a>
+          <span class="separator">|</span>
+          <span>(+84) 76-265-7225</span>
+          <span class="separator">|</span>
+          <a href="https://github.com/thien1234ff" target="_blank">github.com/thien1234ff</a>
+          <span class="separator">|</span>
+          <a href="https://linkedin.com/in/hoangkimthien" target="_blank">linkedin.com/in/hoangkimthien</a>
+          <span class="separator">|</span>
+          <a href="https://scholar.google.com/citations?user=hoangkimthien" target="_blank">Google Scholar</a>
+        </div>
+      </div>
+      <div style="flex-shrink: 0;">
+        <img src="img/avatar/b0bf910b9bf51aab43e4.jpg" alt="Hoang Kim Thien Profile Avatar" style="width: 75px; height: 75px; border-radius: 50%; border: 1.5px solid var(--color-primary); object-fit: cover;">
+      </div>
     </div>
   </header>
 
