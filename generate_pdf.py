@@ -274,7 +274,8 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
         "Bachelor of Science in Computer Science", "Thua Thien Hue, Vietnam"
     ))
     story.append(Spacer(1, 2))
-    story.append(Paragraph("• <b>Academic Standing:</b> Cumulative GPA of <b>3.83 / 4.00</b> (10-point scale: 9.08 / 10.00). Graduation Classification: <b>Excellent</b>.", style_bullet))
+    story.append(Paragraph("• <b>Academic Standing:</b> Cumulative GPA of <b>3.83 / 4.00</b> (10-point scale: 9.08 / 10.00).", style_bullet))
+    story.append(Paragraph("• <b>Graduation Classification:</b> <b>Excellent</b>.", style_bullet))
     story.append(Paragraph("• <b>Academic Ranking:</b> Ranked <b>2nd</b> among all undergraduate Information Technology students in the cohort (K46).", style_bullet))
     story.append(Paragraph("• <b>Scholarships &amp; Honors:</b> Recipient of the prestigious University Merit-Based Scholarship in every semester for outstanding academic performance.", style_bullet))
     story.append(Spacer(1, 8))
@@ -298,10 +299,10 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     # AWARDS & HONORS
     # ----------------------------------------------------
     story.extend(create_section_title("Awards &amp; Honors"))
-    story.append(Paragraph("• <b>Best Paper Award</b> — Faculty Student Scientific Research Conference, Hue University. (2026)", style_bullet))
-    story.append(Paragraph("• <b>Second Prize</b> — national WCAG 2.2 Accessible Website Design Competition. (2025)", style_bullet))
-    story.append(Paragraph("• <b>Second Prize</b> — University ICPC (International Collegiate Programming Contest) Contest. (2024)", style_bullet))
-    story.append(Paragraph("• <b>Consolation Prize</b> — National Mathematical Olympiad for University Students in Linear Algebra. (2024)", style_bullet))
+    story.append(Paragraph("• <b>Best Paper Award</b> — Faculty Student Scientific Research Conference, University of Sciences, Hue University. (October, 2024)", style_bullet))
+    story.append(Paragraph("• <b>Second Prize</b> — WCAG 2.2 Accessible Website Design Competition. (July, 2026)", style_bullet))
+    story.append(Paragraph("• <b>Second Prize</b> — University ICPC (International Collegiate Programming Contest) Contest. (March, 2026)", style_bullet))
+    story.append(Paragraph("• <b>Consolation Prize</b> — National Mathematical Olympiad in Linear Algebra for University Students. (April, 2025)", style_bullet))
     story.append(Paragraph("• <b>University Merit Scholarships</b> — Awarded in consecutive semesters for top academic performance. (2022 — 2026)", style_bullet))
     
     # ----------------------------------------------------
@@ -316,7 +317,7 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     
     # Project 1
     story.append(create_item_header(
-        "6-Bit Quantized Face Recognition", "2025 — 2026",
+        "6-Bit Quantized Face Recognition", "August, 2025 — August, 2026",
         "Undergraduate Thesis Project &amp; Research", "PyTorch, Computer Vision, Model Quantization"
     ))
     story.append(Spacer(1, 2))
@@ -326,7 +327,7 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
 
     # Project 2
     story.append(create_item_header(
-        "SmartAgri: Accessible Digital Farming Platform", "2025",
+        "SmartAgri: Accessible Digital Farming Platform", "June, 2026",
         "Award-Winning Accessibility Design Submission", "Next.js, TailwindCSS, Firebase, OpenAI API, WCAG 2.2"
     ))
     story.append(Spacer(1, 2))
@@ -336,7 +337,7 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
 
     # Project 3
     story.append(create_item_header(
-        "Vietnamese Text Summarization Pipeline", "2025",
+        "Vietnamese Text Summarization Pipeline", "October, 2025",
         "Natural Language Processing Course Project", "Python, NLP, viT5, Transformers, TextRank"
     ))
     story.append(Spacer(1, 2))
@@ -346,7 +347,7 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
 
     # Project 4
     story.append(create_item_header(
-        "Containerized Hadoop Cluster &amp; Network Routing", "2024",
+        "Containerized Hadoop Cluster &amp; Network Routing", "October, 2024",
         "Distributed Computing Research Project", "Hadoop 3.2.1, Docker, Docker Compose, Linux Networking"
     ))
     story.append(Spacer(1, 2))
@@ -356,7 +357,7 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
 
     # Project 5
     story.append(create_item_header(
-        "Recyclable Waste Active Detection System", "2025",
+        "Recyclable Waste Active Detection System", "October, 2025",
         "Computer Vision Course Term Paper", "YOLOv8, PyTorch, Active Learning, OpenCV"
     ))
     story.append(Spacer(1, 2))
@@ -385,12 +386,10 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     story.append(t_skills)
     story.append(Spacer(1, 8))
 
-    # ----------------------------------------------------
-    # LEADERSHIP & EXTRACURRICULARS
-    # ----------------------------------------------------
+    # Leadership & Extracurriculars
     story.extend(create_section_title("Leadership &amp; Extracurriculars"))
     story.append(create_item_header(
-        "HUSC Chess Club &amp; Social Work Team", "2023 — Present",
+        "HUSC Chess Club &amp; Social Work Team", "2025 — Present",
         "Vice President (Chess Club) &amp; Volunteer", "Hue University, Vietnam"
     ))
     story.append(Spacer(1, 2))
@@ -403,7 +402,7 @@ def build_pdf(filename="Hoang_Kim_Thien_CV.pdf"):
     # ----------------------------------------------------
     story.extend(create_section_title("Languages"))
     story.append(Paragraph("• <b>Vietnamese:</b> Native (Mother tongue).", style_bullet))
-    story.append(Paragraph("• <b>English:</b> Professional Working Proficiency. British Council Aptis ESOL Certificate - <b>Overall CEFR B2</b> (Listening: C1, Reading: B2, Speaking: B2, Writing: B1).", style_bullet))
+    story.append(Paragraph("• <b>English:</b> Professional Working Proficiency. British Council Aptis ESOL Certificate - CEFR B2.", style_bullet))
     story.append(Paragraph("• <b>Japanese:</b> Elementary / Beginner (N4/N5 currently studying).", style_bullet))
     story.append(Spacer(1, 8))
 
